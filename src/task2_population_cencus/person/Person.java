@@ -43,6 +43,6 @@ public class Person {
                 ", age=" + age +
                 ", sex=" + sex +
                 ", education=" + education +
-                '}';
+                "}\n";
     }
 }
