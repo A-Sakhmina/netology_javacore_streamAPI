@@ -37,14 +37,16 @@ public class Main {
             System.out.printf("Количество несовершенолетних: %d", underageCount);
 
             //список фамилий призывников (т.е. мужчин от 18 и до 27 лет)
-//            List<Person> conscripts = persons.stream()
-//                    .filter(x -> (x.getSex().toString() == "MAN" && x.getAge() >= 18 && x.getAge() <= 27))
-//                    .flatMap(x->x.getFamily().stream())
-//                    .collect(Collectors.toList());
+            List<String> conscripts = persons.stream()
+                    //фильтруем с помощью промежуточной операции по возрасту и полу
+                    .filter(x -> (x.getSex().toString() == "MAN" && x.getAge() >= 18 && x.getAge() <= 27))
+                    // с помощью промеж операции маппинга map преобразуем объекты Person в String(получаем только имена)
+                    .map(Person::getFamily)
+                    //с помощью терминальной операции collect собираем полученный стрим в отдельный лист
+                    .collect(Collectors.toList());
             System.out.println(conscripts);
 
-
-
+            
 
         }
 
